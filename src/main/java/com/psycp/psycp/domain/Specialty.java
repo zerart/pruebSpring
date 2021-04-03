@@ -1,8 +1,8 @@
 package com.psycp.psycp.domain;
 
-public class SpecialtyDTO {
+public class Specialty {
     private int specialtyId;
-    private SpecialtyGroupDTO specialtyGroupDTO;
+    private SpecialtyGroup specialtyGroup;
     private String specialtyName;
     private int activate;
 
@@ -14,12 +14,12 @@ public class SpecialtyDTO {
         this.specialtyId = specialtyId;
     }
 
-    public SpecialtyGroupDTO getSpecialtyGroup() {
-        return specialtyGroupDTO;
+    public SpecialtyGroup getSpecialtyGroup() {
+        return specialtyGroup;
     }
 
-    public void setSpecialtyGroup(SpecialtyGroupDTO specialtyGroupDTO) {
-        this.specialtyGroupDTO = specialtyGroupDTO;
+    public void setSpecialtyGroup(SpecialtyGroup specialtyGroup) {
+        this.specialtyGroup = specialtyGroup;
     }
 
     public String getSpecialtyName() {

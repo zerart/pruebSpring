@@ -1,6 +1,6 @@
 package com.psycp.psycp.domain.service;
 
-import com.psycp.psycp.domain.SpecialtyDTO;
+import com.psycp.psycp.domain.Specialty;
 import com.psycp.psycp.domain.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,25 +11,25 @@ import java.util.Optional;
 @Service
 public class SpecialtyService {
     @Autowired
-    private SpecialtyRepositoryDTO specialtyRepositoryDTO;
+    private SpecialtyRepository specialtyRepository;
 
-    public List<SpecialtyDTO> getAll(){
-        return specialtyRepositoryDTO.getAll();
+    public List<Specialty> getAll(){
+        return specialtyRepository.getAll();
     }
-    public Optional<SpecialtyDTO> getSpecialtyDTO(int specialtyId){
-        return specialtyRepositoryDTO.getSpecialtyDTO(specialtyId);
+    public Optional<Specialty> getSpecialty(int specialtyId){
+        return specialtyRepository.getSpecialty(specialtyId);
     }
-    public Optional<List<SpecialtyDTO>> getBySpecialtyGroupDTO(int specialtyGroupId){
-        return  specialtyRepositoryDTO.getBySpecialtyGroupDTO(specialtyGroupId);
+    public Optional<List<Specialty>> getBySpecialtyGroup(int specialtyGroupId){
+        return  specialtyRepository.getBySpecialtyGroup(specialtyGroupId);
     }
 
-    public SpecialtyDTO save(SpecialtyDTO specialty){
-        return specialtyRepositoryDTO.save(specialty);
+    public Specialty save(Specialty specialty){
+        return specialtyRepository.save(specialty);
     }
     public boolean delete(int specialtyId)
     {
-        return getSpecialtyDTO(specialtyId).map(specialtyDTO -> {
-           specialtyRepositoryDTO.delete(specialtyId);
+        return getSpecialty(specialtyId).map(specialty -> {
+           specialtyRepository.delete(specialtyId);
            return true;
         }).orElse(false);
     }

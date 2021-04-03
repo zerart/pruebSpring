@@ -2,13 +2,12 @@ package com.psycp.psycp.persistence.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 
 @Entity
 @Table(name="specialty_groups")
-public class SpecialtyGroup {
+public class SpecialtyGroupEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     @Column(name="specialty_groups_id")
@@ -26,8 +25,8 @@ public class SpecialtyGroup {
     @Column(name="activate")
     private Integer activate;
 
-    @OneToMany(mappedBy =  "specialtyGroup")
-    private List<Specialty> specialtys;
+    @OneToMany(mappedBy =  "specialtyGroupEntity")
+    private List<SpecialtyEntity> specialtyEntities;
 
     public Integer getSpecialtyGroupId() {
         return specialtyGroupId;
@@ -69,11 +68,11 @@ public class SpecialtyGroup {
         this.activate = activate;
     }
 
-    public List<Specialty> getSpecialtys() {
-        return specialtys;
+    public List<SpecialtyEntity> getSpecialtyEntities() {
+        return specialtyEntities;
     }
 
-    public void setSpecialtys(List<Specialty> specialtys) {
-        this.specialtys = specialtys;
+    public void setSpecialtyEntities(List<SpecialtyEntity> specialtyEntities) {
+        this.specialtyEntities = specialtyEntities;
     }
 }

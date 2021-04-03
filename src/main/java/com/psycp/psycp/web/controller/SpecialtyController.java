@@ -1,39 +1,43 @@
 package com.psycp.psycp.web.controller;
 
 
-import com.psycp.psycp.domain.SpecialtyDTO;
+import com.psycp.psycp.domain.Specialty;
 import com.psycp.psycp.domain.service.SpecialtyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
 @RestController
 @RequestMapping("/specialtys")
 public class SpecialtyController {
     @Autowired
     private SpecialtyService specialtyService;
 
-
-    public List<SpecialtyDTO> getAll(){
-        return specialtyService.getAll();
+    @GetMapping("/all")
+    public ResponseEntity<List<Specialty>> getAll() {
+        return new ResponseEntity<>(specialtyService.getAll(), HttpStatus.OK);
     }
 
-    public Optional<SpecialtyDTO> getSpecialtyDTO(int specialtyId){
-        return specialtyService.getSpecialtyDTO(specialtyId);
+    @GetMapping("/{specialtyId}")
+    public Optional<Specialty> getSpecialty(@PathVariable("specialtyId") int specialtyId) {
+        return specialtyService.getSpecialty(specialtyId);
     }
 
-    public Optional<List<SpecialtyDTO>> getBySpecialtyGroupDTO(int specialtyGroupId){
-        return  specialtyService.getBySpecialtyGroupDTO(specialtyGroupId);
+    @GetMapping("/{specialtyGroupId}")
+    public Optional<List<Specialty>> getBySpecialtyGroup(@PathVariable("specialtyGroupId") int specialtyGroupId) {
+        return specialtyService.getBySpecialtyGroup(specialtyGroupId);
     }
 
-    public SpecialtyDTO save(SpecialtyDTO specialtyDTO){
-        return specialtyService.save(specialtyDTO);
+    @PostMapping("/save")
+    public Specialty save(@RequestBody Specialty specialty) {
+        return specialtyService.save(specialty);
     }
-    public boolean delete(int specialtyId)
-    {
+
+    @DeleteMapping("/delete/specialtyId")
+    public boolean delete(@PathVariable("specialtyId") int specialtyId) {
         return specialtyService.delete(specialtyId);
     }
 }

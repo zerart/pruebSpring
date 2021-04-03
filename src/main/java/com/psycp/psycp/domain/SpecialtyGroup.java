@@ -1,6 +1,6 @@
 package com.psycp.psycp.domain;
 
-public class SpecialtyGroupDTO {
+public class SpecialtyGroup {
     private int specialtyGroupId;
     private String specialtyGroupName;
     private int activate;
