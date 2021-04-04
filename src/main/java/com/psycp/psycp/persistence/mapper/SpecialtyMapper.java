@@ -6,22 +6,18 @@ import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Mapper(componentModel = "spring", uses = {SpecialtyGroupMapper.class})
+@Component
 public interface SpecialtyMapper
 {
-
-    @Mappings({
-            @Mapping(source = "specialtyName", target = "specialtyName"),
-            @Mapping(source = "specialtyId", target = "specialtyId"),
-            @Mapping(source = "activate", target = "activate"),
-            @Mapping(source = "specialtyGroup", target = "specialtyGroup"),
-    })
     Specialty toSpecialty(SpecialtyEntity specialtyEntity);
     List<Specialty> toSpecialties(List<SpecialtyEntity> specialtyEntities);
     @InheritInverseConfiguration
+    @Mapping(target = "createdAt", ignore = true)
+    @Mapping(target = "updateAt", ignore = true)
     SpecialtyEntity toSpecialtyEntity(Specialty specialty);
-
 }

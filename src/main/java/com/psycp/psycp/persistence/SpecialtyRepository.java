@@ -15,6 +15,7 @@ public class SpecialtyRepository implements com.psycp.psycp.domain.repository.Sp
 
     @Autowired
     private SpecialtyCrudRepository specialtyCrudRepository;
+
     @Autowired
     private SpecialtyMapper mapper;
 
